@@ -4,6 +4,35 @@ This is a simple Azure Function app written in Python that receives sensor readi
 
 ---
 
+## 📝 Project Instructions
+
+**Project title:**  
+Sensor data updater
+
+**Purpose:**
+Create an Azure Function (Python 3.12, v4) that receives sensor readings from an HTTP POST request and persists them in Cosmos DB without using function-level bindings.
+
+**Functional requirements:**
+
+- Request body: a JSON array containing between 1 and 100 sensor objects.
+- Each object carries a unique sensor identifier plus other attributes.
+- For every item, locate the matching document (if it exists) and update its attributes; otherwise insert a new document.
+- Updates must be non-destructive — attributes already stored that are absent from the request should remain unchanged.
+- Ensure the update logic copes gracefully if another process is simultaneously modifying the same document.
+- The implementation must be efficient when the payload approaches the upper limit.
+- Add comments explaining assumptions and design choices.
+- Deliver main.py and requirements.txt.
+
+### ⚙️ Note on Python Azure Function Programming Model
+
+> Although the instruction mentions delivering `main.py`, this implementation uses the **Python v2 programming model** for Azure Functions.
+
+In this model:
+
+- The entry point must be named `function_app.py`.
+- This is because the v2 model **does not use `function.json`** to declare the function.
+- Instead, it uses **Python decorators** to define the trigger and bindings, and Azure expects the entry module to be named `function_app.py`.
+
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -62,8 +91,8 @@ pip install -r requirements.txt
 
 ### Start the Azure Cosmos DB Emulator
 
-`Make sure the emulator is already running before running the function app.
-Only one instance of the emulator should be running.`
+> Make sure the emulator is already running before running the function app.
+> Only one instance of the emulator should be running.
 
 ```powershell
 & "C:\Program Files\Azure Cosmos DB Emulator\Microsoft.Azure.Cosmos.Emulator.exe" /Port=65000
