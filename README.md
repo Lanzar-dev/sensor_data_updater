@@ -93,6 +93,7 @@ pip install -r requirements.txt
 
 > Make sure the emulator is already running before running the function app.
 > Only one instance of the emulator should be running.
+> You can open Powershell and run the command below.
 
 ```powershell
 & "C:\Program Files\Azure Cosmos DB Emulator\Microsoft.Azure.Cosmos.Emulator.exe" /Port=65000
