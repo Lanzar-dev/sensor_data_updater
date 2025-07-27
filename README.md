@@ -19,10 +19,32 @@ Before you begin, ensure you have the following installed:
   npm install -g azure-functions-core-tools@4 --unsafe-perm true
   ```
 
-### Unzip the folder and open the project directory in a terminal
+### Clone the repository or download the zip
+
+```bash
+git clone https://github.com/Lanzar-dev/sensor_data_updater.git
+```
+
+### Change into the project directory in a terminal
 
 ```bash
 cd <your-unzipped-folder>
+```
+
+### Add local.settings.json file in the root directory with the following content
+
+```bash
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "COSMOS_URL": "https://localhost:8081/",
+    "COSMOS_KEY": "<COSMOS_DB_EMULATOR_KEY>",
+    "COSMOS_DB_NAME": "SensorDB",
+    "COSMOS_CONTAINER_NAME": "Readings"
+  }
+}
 ```
 
 ### Create and activate a virtual environment
